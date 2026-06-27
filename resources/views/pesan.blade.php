@@ -8,7 +8,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="animate-fade">
     <p>Hairgalla.pkp</p>
     <nav>
@@ -20,7 +19,6 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <section id="hero" class="animate-fade">
     <div class="hero-tag">Reservasi</div>
     <div class="gold-divider"></div>
@@ -28,11 +26,8 @@
     <p>Pilih layanan, tentukan waktu, dan kami siap menyambut Anda.</p>
   </section>
 
-  <!-- FORM -->
   <section id="form-pesan" class="reveal">
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
-
-      <!-- KIRI: info -->
       <div>
         <div class="section-tag">Reservasi</div>
         <h2 style="margin-bottom:20px;">Booking<br>Mudah & Cepat.</h2>
@@ -52,25 +47,23 @@
             <div style="width:1px; background:#2a2a2a; height:40px; margin-top:4px;"></div>
             <div>
               <div style="font-size:10px; color:#C9A84C; letter-spacing:3px; font-family:Arial,sans-serif; margin-bottom:4px;">LOKASI</div>
-              <div style="font-size:13px; color:#888; font-family:Arial,sans-serif;">Jl. Contoh No. 1</div>
-              <div style="font-size:13px; color:#888; font-family:Arial,sans-serif;">Pangkalan Kerinci</div>
+              <div style="font-size:13px; color:#888; font-family:Arial,sans-serif;">Jl. Pahlawan 12 Gg. Ikhlas</div>
+              <div style="font-size:13px; color:#888; font-family:Arial,sans-serif;">Kota Pangkal Pinang</div>
             </div>
           </div>
           <div style="display:flex; gap:16px; align-items:flex-start;">
             <div style="width:1px; background:#2a2a2a; height:40px; margin-top:4px;"></div>
             <div>
               <div style="font-size:10px; color:#C9A84C; letter-spacing:3px; font-family:Arial,sans-serif; margin-bottom:4px;">WHATSAPP</div>
-              <div style="font-size:13px; color:#888; font-family:Arial,sans-serif;">0812-xxxx-xxxx</div>
+              <div style="font-size:13px; color:#888; font-family:Arial,sans-serif;">+62 813-9506-9206</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- KANAN: form -->
       <div class="form-wrapper" style="max-width:100%;">
         <form action="/pesan" method="POST">
           @csrf
-
           @if ($errors->any())
             <div style="background:#111; border:1px solid #8B0000; padding:16px; margin-bottom:24px;">
               <ul style="list-style:none; color:#cc4444; font-size:12px; font-family:Arial,sans-serif;">
@@ -80,17 +73,14 @@
               </ul>
             </div>
           @endif
-
           <div class="form-group">
             <label>Nama Lengkap</label>
             <input type="text" name="nama" placeholder="Masukkan nama Anda"/>
           </div>
-
           <div class="form-group">
             <label>Nomor WhatsApp</label>
             <input type="text" name="whatsapp" placeholder="08xx-xxxx-xxxx"/>
           </div>
-
           <div class="form-group">
             <label>Pilih Layanan</label>
             <select name="layanan">
@@ -111,30 +101,31 @@
               <option value="Platinum Member" {{ request('layanan') == 'Platinum Member' ? 'selected' : '' }}>Platinum Member — Rp 750.000</option>
             </select>
           </div>
-
           <div class="form-group">
             <label>Tanggal & Jam</label>
             <input type="datetime-local" name="jadwal"/>
           </div>
-
           <div class="form-group">
             <label>Catatan (opsional)</label>
             <textarea name="catatan" placeholder="Contoh: mau model undercut, referensi ada di Instagram..."></textarea>
           </div>
-
           <button type="submit" class="btn-submit">Kirim Pesanan →</button>
         </form>
       </div>
-
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-brand">Hairgalla.pkp</div>
-<p>© 2025 Hairgalla Barbershop — Pangkal Pinang &nbsp;|&nbsp; 📍 Jl. Pahlawan 12 Gg. Ikhlas &nbsp;|&nbsp; 📱 +62 813-9506-9206</p>  </footer>
+    <p>© 2025 Hairgalla Barbershop — Pangkal Pinang &nbsp;|&nbsp; 📍 Jl. Pahlawan 12 Gg. Ikhlas &nbsp;|&nbsp; 📱 +62 813-9506-9206</p>
+  </footer>
 
   <script>
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('nav a').forEach(link => {
+      if (link.getAttribute('href') === currentPath) link.classList.add('active');
+    });
+
     document.body.style.opacity = '0';
     window.addEventListener('load', () => {
       document.body.style.transition = 'opacity 0.4s ease';
@@ -143,12 +134,9 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.08 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     document.querySelectorAll('nav a, .btn-gold, .btn-outline').forEach(link => {

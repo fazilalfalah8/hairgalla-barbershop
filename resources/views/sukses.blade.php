@@ -8,7 +8,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="animate-fade">
     <p>Hairgalla.pkp</p>
     <nav>
@@ -20,7 +19,6 @@
     </nav>
   </header>
 
-  <!-- SUKSES -->
   <section id="hero" class="animate-fade">
     <div class="hero-tag">Konfirmasi Pesanan</div>
     <div class="gold-divider"></div>
@@ -30,12 +28,17 @@
     <a href="/layanan" class="btn-outline">Lihat Layanan Lain</a>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-brand">Hairgalla.pkp</div>
-<p>© 2025 Hairgalla Barbershop — Pangkal Pinang &nbsp;|&nbsp; 📍 Jl. Pahlawan 12 Gg. Ikhlas &nbsp;|&nbsp; 📱 +62 813-9506-9206</p>  </footer>
+    <p>© 2025 Hairgalla Barbershop — Pangkal Pinang &nbsp;|&nbsp; 📍 Jl. Pahlawan 12 Gg. Ikhlas &nbsp;|&nbsp; 📱 +62 813-9506-9206</p>
+  </footer>
 
   <script>
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('nav a').forEach(link => {
+      if (link.getAttribute('href') === currentPath) link.classList.add('active');
+    });
+
     document.body.style.opacity = '0';
     window.addEventListener('load', () => {
       document.body.style.transition = 'opacity 0.4s ease';

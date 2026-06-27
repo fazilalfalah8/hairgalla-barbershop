@@ -50,6 +50,10 @@ nav a:hover {
   color: #C9A84C;
 }
 
+nav a.active {
+  color: #C9A84C;
+}
+
 /* HERO */
 #hero {
   padding: 100px 60px 80px;
@@ -568,3 +572,4 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   transform: translateY(-4px);
   transition: all 0.2s ease;
 }
+
